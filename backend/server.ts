@@ -2,8 +2,13 @@ import express from "express";
 import "dotenv/config";
 import cors, { type CorsOptions } from "cors";
 import { connectDB } from "./config/db";
-import { notFound, errorHandler } from "./middleware/errorHandler";
+import {
+  notFound,
+  errorHandler,
+} from "./middleware/errorHandler.middleware.ts";
 import { FRONTEND_URL, PORT as BACKEND_PORT } from "./config/envConfig";
+import authRoutes from "./routes/auth.routes.ts";
+import habitRoutes from "./routes/habits.routes.ts";
 
 const app = express();
 
@@ -47,6 +52,10 @@ app.use(express.json({ limit: "1mb" }));
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok", time: new Date().toISOString() });
 });
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/habits", habitRoutes);
 
 // Handle Erros centrally
 // Catch unknown routes
