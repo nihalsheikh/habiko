@@ -6,7 +6,7 @@ import {
   notFound,
   errorHandler,
 } from "./middleware/errorHandler.middleware.ts";
-import { FRONTEND_URL, PORT as BACKEND_PORT } from "./config/envConfig";
+import { FRONTEND_URL, PORT } from "./config/envConfig";
 import authRoutes from "./routes/auth.routes.ts";
 import habitRoutes from "./routes/habits.routes.ts";
 import logRoutes from "./routes/logs.routes.ts";
@@ -68,11 +68,7 @@ app.use(notFound);
 // Process all app errors
 app.use(errorHandler);
 
-const PORT = BACKEND_PORT || 5000;
-
 // Connect DB
 connectDB().then(() => {
-  app.listen(PORT, () =>
-    console.log(`Server is running on http://localhost:${PORT}`),
-  );
+  app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 });
