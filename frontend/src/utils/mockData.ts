@@ -1,8 +1,3 @@
-// ────────────────────────────────────────────────────────────────────────────
-// Mock data for the UI boilerplate.
-// Replace api/axios.js with a real axios client and delete this file when
-// you wire up the backend.
-// ────────────────────────────────────────────────────────────────────────────
 import { format, subDays } from "date-fns";
 import type { HabitLog, User } from "../types/api";
 import type {
