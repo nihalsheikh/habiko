@@ -13,6 +13,5 @@ export const MONGODB_URL = getEnv("MONGODB_URL");
 export const JWT_SECRET = getEnv("JWT_SECRET");
 export const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "7d";
 export const GEMINI_API_KEY = getEnv("GEMINI_API_KEY");
-export const GEMINI_MODEL =
-  process.env.GEMINI_MODEL || "gemini-3.6-flash" || "gemini-2.5-flash";
+export const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
