@@ -12,17 +12,26 @@ export default function MorningMotivation() {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!user?.morningMotivation) return;
+    if (!user?.morningMotivation) {
+      // Clear dismissal/seen flags so re-enabling will trigger fresh content
+      localStorage.removeItem("morning-seen");
+      setContent("");
+      return;
+    }
+
     const today = new Date().toISOString().slice(0, 10);
     const seen = localStorage.getItem("morning-seen");
     if (seen === today) return;
+
     setLoading(true);
+
     api
       .get<MorningMotivationResponse>("/ai/morning")
       .then((res) => {
         setContent(res.data.content);
         localStorage.setItem("morning-seen", today);
       })
+      .catch((err) => console.error("Morning motivation error:", err))
       .finally(() => setLoading(false));
   }, [user?.morningMotivation]);
 
