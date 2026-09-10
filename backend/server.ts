@@ -10,6 +10,7 @@ import { FRONTEND_URL, PORT as BACKEND_PORT } from "./config/envConfig";
 import authRoutes from "./routes/auth.routes.ts";
 import habitRoutes from "./routes/habits.routes.ts";
 import logRoutes from "./routes/logs.routes.ts";
+import aiRoutes from "./routes/ai.routes.ts";
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/habits", habitRoutes);
 app.use("/api/logs", logRoutes);
+app.use("/api/ai", aiRoutes);
 
 // Handle Erros centrally
 // Catch unknown routes

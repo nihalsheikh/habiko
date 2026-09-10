@@ -7,7 +7,6 @@ import {
 } from "../controllers/auth.controller";
 import { protect } from "../middleware/auth.middleware";
 
-// Express Router
 const router = express.Router();
 
 // Routes
